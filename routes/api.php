@@ -23,8 +23,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::post('register',[AuthController::class,'register']);
 
+
 Route::group(['middleware' => ['auth:sanctum']],function(){
     
     Route::post('store',[QuestionController::class,'store']);
+    Route::post('logout',[AuthController::class,'logout']);
+
 
 });
