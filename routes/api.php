@@ -32,6 +32,8 @@ Route::group(['middleware' => ['auth:sanctum']],function(){
     
     Route::post('store',[QuestionController::class,'store']);
     Route::put('update/{id}',[QuestionController::class,'update']);
+    Route::delete('delete/{id}',[QuestionController::class,'delete']);
+
 
     Route::post('logout',[AuthController::class,'logout']);
 

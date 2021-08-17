@@ -48,4 +48,18 @@ class QuestionController extends Controller
 
         return response()->json($question,200);
     }
+
+    public function delete(Request $request, $id){
+
+        $question = Question::find($id);
+
+        if(is_null($question)){
+            return response()->json(["message"=>"record not found for deletion"],404);
+        }
+        $user = $request->user();
+        $request->request->add(['user_id'=>$user->id]);
+
+        $question->delete();
+        return response()->json(["data_deleted"],204);
+    }
 }
