@@ -17,6 +17,8 @@ class CreateQuestionsTable extends Migration
             $table->id();
             $table->string('question');
             $table->string('answer');
+            // $table->bigInteger('user_id')->unsigned();
+            $table->foreignId('user_id')->onDelete('cascade');
             $table->timestamps();
         });
     }

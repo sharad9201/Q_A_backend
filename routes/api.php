@@ -17,7 +17,10 @@ use App\Http\Controllers\AuthController;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
@@ -28,6 +31,8 @@ Route::post('login',[AuthController::class,'login']);
 Route::group(['middleware' => ['auth:sanctum']],function(){
     
     Route::post('store',[QuestionController::class,'store']);
+    Route::put('update/{id}',[QuestionController::class,'update']);
+
     Route::post('logout',[AuthController::class,'logout']);
 
 
