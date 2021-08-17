@@ -33,4 +33,19 @@ class QuestionController extends Controller
         
         return response()->json($question,200);
     }
+
+    public function update(Request $request, $id){
+
+
+        $question = Question::find($id);
+        if(is_null($question)){
+            return response()->json(["messsage"=>"record not found"],404);
+        }
+        $user = $request->user();
+        $request->request->add(['user_id'=>$user->id]);
+        
+        $question->update($request->all());
+
+        return response()->json($question,200);
+    }
 }
