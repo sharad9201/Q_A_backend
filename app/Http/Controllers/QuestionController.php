@@ -60,6 +60,6 @@ class QuestionController extends Controller
         $request->request->add(['user_id'=>$user->id]);
 
         $question->delete();
-        return response()->json(["data_deleted"],204);
+        return response()->json(["message"=>"data_deleted"],204);
     }
 }
